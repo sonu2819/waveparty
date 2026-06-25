@@ -6,7 +6,13 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <h2 className="room-logo">Wave</h2>
+      <h2
+    className="room-logo"
+    onClick={() => window.location.href = "/"}
+  >
+      
+      Wave</h2>
+        
 
         <div
           className="menu-icon"
