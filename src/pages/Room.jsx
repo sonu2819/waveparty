@@ -5,12 +5,13 @@ import VideoPlayer from "../components/VideoPlayer";
 import Chat from "../components/Chat";
 import "../room.css";
 import VoiceChat from "../components/VoiceChat";
-
-
+import LocalVideoPlayer from "../components/LocalVideoPlayer";
+import { useState } from "react"
 
 export default function Room() {
-
+  const [mode, setMode] = useState("youtube");
   const { id } = useParams();
+ // change to "local" when testing MP4
 
   if (!id) {
     return <div>Invalid Room</div>;
@@ -31,7 +32,7 @@ export default function Room() {
       {/* TOP BAR */}
       {/* ========================= */}
 
-    
+
 <div className="top-bar">
 
   <h2
@@ -43,24 +44,27 @@ export default function Room() {
 
  <div className="top-actions">
 
-  
 
-  <input
-    value={shareLink}
-    readOnly
-  />
+<select
+  className="player-selector"
+  value={mode}
+  onChange={(e) => setMode(e.target.value)}
+>
+  <option value="youtube">📺 YouTube</option>
+  <option value="local">🎞️ Direct Link</option>
+</select>
 
+ 
   {/* <button onClick={copyLink}>
     Share
   </button> */}
 
   <button className="share-btn" onClick={copyLink}>
-  
+
   Share
 </button>
 
 </div>
-
 
 
 
@@ -74,10 +78,15 @@ export default function Room() {
       {/* ========================= */}
 
       <div className="video-section">
+        
 
         <div className="video-box">
 
-          <VideoPlayer roomId={id} />
+          {mode === "youtube" ? (
+  <VideoPlayer roomId={id} />
+) : (
+  <LocalVideoPlayer roomId={id} />
+)}
 
         </div>
 
@@ -91,11 +100,12 @@ export default function Room() {
       <div className="chat-wrapper">
 
         <Chat roomId={id} />
-        
+
 
       </div>
-      
+
 
     </div>
   );
 }
+

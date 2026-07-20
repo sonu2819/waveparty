@@ -212,16 +212,21 @@ body {
 
 .video-section {
   width: 100%;
+ 
 
   display: flex;
   justify-content: center;
 
-  padding: 20px;
+
+   padding: 0;
+  margin-bottom: 0;
 
   box-sizing: border-box;
 }
 
 .video-box {
+
+
   width: 95%;
   max-width: 1400px;
 
@@ -867,3 +872,76 @@ body {
 
 
 
+
+/* Mp4 or url Player */
+
+.player-selector{
+  flex:1;
+  min-width:180px;
+  height:38px;
+
+  margin-top:5px;
+
+  padding:0 40px 0 16px;
+
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+
+  background:rgba(255,255,255,0.05);
+
+  color:#fff;
+
+  font-size:14px;
+  font-weight:500;
+
+  cursor:pointer;
+  outline:none;
+
+  transition:.25s;
+
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5L8 12l6.5-6.5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+}
+
+.player-selector:hover{
+  border-color:#d90429;
+  background:rgba(217,4,41,.08);
+}
+
+.player-selector:focus{
+  border-color:#d90429;
+  box-shadow:0 0 15px rgba(217,4,41,.35);
+}
+
+.player-selector option{
+  background:#181818;
+  color:#fff;
+}
+
+
+
+
+@media (max-width:768px){
+
+  .top-actions{
+    display:flex;
+    align-items:center;
+    width:100%;
+    gap:12px;
+  }
+
+  .player-selector{
+    flex:1;
+    width:auto;
+    min-width:0;
+    margin:0;
+  }
+
+ 
+
+}
